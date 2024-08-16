@@ -1,0 +1,6 @@
+- Open the search bar with WIN + R and type prefetch, temp, %temp% and delete all the files.
+- Click this Pc go into windows folder the go to the software distribution folder and delete all the files.
+- Right click the C drive and click property and the select tool tab and optimized the disk( hint: if is a SSD drive is not to necessary doing this step)
+- Open disk clean up and select what you want to delete.
+- Open command prompt and type ipconfig/flushdns this will clean you cache for the dns 
+- W +R type wsreset this will reset the microsoft store, this will help with apps and update issues.
