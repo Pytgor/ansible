@@ -1,6 +1,13 @@
 # Create an ssh-key
 
+
+
+
 - ssh-keygen -t ed25519 -C "name of ssh"
+
+# Copy my ssh key to a server 
+
+- ssh-copy-id username@server_ip after this the key will be copy in the ~/.ssh/authorized_keys file.
 
 # Copy ssh key to our server
 
