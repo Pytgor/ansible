@@ -28,3 +28,12 @@ After this it will ask you for the password of the machine that you are managing
 This will install the snapd package but with can improve the installation with the next command 
 -  ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
 What this command will do is install the latest version of the program specified by adding state=latest remember everything need to be between quotes from the ==name to latest==
+
+# How to run and create a playbook 
+
+- To create a playbook create a file with the extension yml after that add the next line inside as an example to install apache2 
+
+![[Screenshot from 2024-08-23 00-28-35.png]]
+
+## In order to use the playbook use the next command
+- 
