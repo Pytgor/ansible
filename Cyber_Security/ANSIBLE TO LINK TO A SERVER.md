@@ -16,4 +16,9 @@ As you can see the predifined variable inventory is to add the name of our inven
 
 # Connet and ping to the server with asinble
 -  ==ansible all -m ping== this way it will look 
-  
+
+
+# Same as sudo apt update in ansible
+
+- ansible all -m apt -a update_cache=true --become --ask-become-pass 
+After this it will ask you for the password of the machine that you are managing using ssh or sometime you can use your sudo user password
