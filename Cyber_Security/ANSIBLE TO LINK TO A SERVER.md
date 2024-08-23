@@ -22,3 +22,9 @@ As you can see the predifined variable inventory is to add the name of our inven
 
 - ansible all -m apt -a update_cache=true --become --ask-become-pass 
 After this it will ask you for the password of the machine that you are managing using ssh or sometime you can use your sudo user password
+
+# Install a package and the later version 
+-  ansible all -m apt -a name=snapd --become --ask-become-pass 
+This will install the snapd package but with can improve the installation with the next command 
+-  ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+What this command will do is install the latest version of the program specified by adding state=latest remember everything need to be between quotes from the ==name to latest==
