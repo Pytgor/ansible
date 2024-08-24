@@ -11,8 +11,8 @@
   - name: install apache2 package
     apt:
       name: apache2
-      state: latest
+      state: absent
   - name: Install curl
     apt:
       name: curl
-      state: latest
+      state: absent
