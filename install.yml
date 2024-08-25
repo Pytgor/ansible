@@ -1,0 +1,23 @@
+---
+
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Install updates for Pop!_OS
+      apt:
+        upgrade: dist
+        update_cache: yes
+      when: ansible_distribution in [ "Pop!_OS", "Ubuntu" ]
+
+- hosts: web_server
+  become: true
+  tasks:
+    - name: Install apache2 and curl for Ubuntu server
+      apt:
+        name:
+          - apache2
+          - curl
+        state: latest
+      when: ansible_distribution == [ "Ubuntu", "Ubuntu" ]
+

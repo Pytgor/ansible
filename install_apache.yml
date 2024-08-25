@@ -4,15 +4,34 @@
   become: true
   tasks:
 
-  - name: update repository index
+  - name: install updates (Pop!_OS)
     apt:
+      upgrade: dist
       update_cache: yes
+    when: ansible_distribution == "Pop!_OS"
 
-  - name: install apache2 package
+  - name: install update (Ubuntu)
     apt:
-      name: apache2
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+
+- hosts: web_server
+  become: true
+  tasks:
+    - name: install apache2 and curl (Pop!_OS)
+      apt:
+        name:
+          - apache2
+          - curl
       state: latest
-  - name: Install curl
-    apt:
-      name: curl
-      state: latest
+    when: ansible_distribution == "Pop!_OS"
+
+    - name: install updates (Ubuntu)
+      apt:
+        name:
+           - apache2
+           - curl
+      state: latest 
+    when: ansible_distribution == "Ubuntu"
