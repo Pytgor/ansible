@@ -12,7 +12,7 @@
 
 
 ![[Screenshot from 2024-08-21 21-26-36.png]]
-As you can see the predifined variable inventory is to add the name of our inventory and the private_key_file  is to add our ssh private this way we do not need to use the long command in the top to ping and go to be able to use the command below 
+As you can see the predefined variable inventory is to add the name of our inventory and the private_key_file  is to add our ssh private this way we do not need to use the long command in the top to ping and go to be able to use the command below 
 
 # Connet and ping to the server with asinble
 -  ==ansible all -m ping== this way it will look 
@@ -36,4 +36,13 @@ What this command will do is install the latest version of the program specified
 ![[Screenshot from 2024-08-23 00-28-35.png]]
 
 ## In order to use the playbook use the next command
-- 
+- ansible-playbook --ask-become-pass file.yml 
+This code  will run the playbook using the  yml config file that you created.
+
+## How to list all your tags in a yml file 
+To list all tags in a config file follow the next command
+- ==ansible-playbook --list-tags name_of_the_file.yml==  where you have the tags
+
+## How to use a tags to display only the info where is specified
+Use the next command 
+- ==ansible-playbook --tags name_of_the_tag --ask-become-pass name_of_the_file.yml==  where the tags are 
