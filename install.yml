@@ -1,23 +1,36 @@
 ---
 
-
 - hosts: all
   become: true
   tasks:
-    - name: Install updates for Pop!_OS
+    - name: Install updates for Pop!_OS and Ubuntu
+      tags: always
       apt:
         upgrade: dist
         update_cache: yes
-      when: ansible_distribution in [ "Pop!_OS", "Ubuntu" ]
+      when: ansible_distribution in ["Pop!_OS", "Ubuntu"]
 
 - hosts: web_server
   become: true
   tasks:
-    - name: Install apache2 and curl for Ubuntu server
+    - name: Install apache2 and curl for Pop OS or Ubuntu server
+      tags: apache_curl
       apt:
         name:
           - apache2
           - curl
         state: latest
-      when: ansible_distribution == [ "Ubuntu", "Ubuntu" ]
+      when: ansible_distribution in ["Ubuntu", "Pop!_OS"]
+
+- hosts: nmap_server
+  become: true
+  tasks:
+    - name: install nmap package(Ubuntu)
+      tags: nmap_package
+      apt:
+        name: nmap
+        state: latest
+      when: ansible_distribution in ["Ubuntu", "Pop!_OS"]
+
+
 

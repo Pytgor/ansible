@@ -1,6 +1,6 @@
 
-[web-server]
-10.0.0.69 
-
-[db_server]
+[web_server]
 10.0.0.26 
+
+[nmap_server]
+10.0.0.69 
