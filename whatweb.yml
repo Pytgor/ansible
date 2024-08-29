@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Install whatweb for Ubuntu and Pop OS
+      tags: whatweb
+      apt:
+        name: whatweb
+        state: latest
+      when: ansible_distribution in ["Ubuntu", "Pop!_OS"]

@@ -3,19 +3,60 @@
 - hosts: all
   become: true
   tasks:
-    - name: Install updates for Pop!_OS
+    - name: updates repo for Pop!_OS
       tags: always
       apt:
-        upgrade: dist
         update_cache: yes
+      changed_when: false
       when: ansible_distribution == "Pop!_OS"
 
-    - name: Install updates for Ubuntu
+    - name: updates repo for Ubuntu
       tags: always
       apt:
-        upgrade: dist
         update_cache: yes
+      changed_when: false
       when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: yes
+  tasks:
+
+    - name: Add ssh key for simone
+      tags: always
+      authorized_key:
+        user: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHtQtGpMRxrzIkEex0sxfl5aGfw2svlXEeqtJjNTU5Wq ansible"
+
+- hosts: workstations
+  become: yes
+  tasks:
+    - name: install unzip
+      package:
+          name: unzip
+          state: latest
+
+
+
+    - name: Check if a file exist
+      stat:
+         path: /tmp/terraform_1.5.6_linux_amd64.zip
+      register: terraform_variable
+
+    - name: Download Terraform ZIP
+      get_url:
+         url: https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
+         dest: /tmp/terraform_1.5.6_linux_amd64.zip
+
+    - name: Install terraform
+      tags: terra
+      unarchive:
+          src: /tmp/terraform_1.5.6_linux_amd64.zip
+          dest: /usr/local/bin
+          remote_src: yes
+          owner: root
+          group: root
+          mode: 0755
+
 
 - hosts: web_server
   become: true
@@ -38,11 +79,34 @@
         state: latest
       when: ansible_distribution == "Ubuntu"
 
+    - name: Start apache2
+      tags:  start_apache2
+      service:
+          name: apache2
+          state: started
+          enabled: yes
+      when: ansible_distribution == "Pop!_OS"
+
+    - name: change e-mail address for admin
+      tags: email_change
+      lineinfile:
+        path: /etc/apache2/apache2.conf
+        regexp: '^ServerAdmin'
+        line: ServerAdmin test@server.com
+      when: ansible_distribution == "Pop!_OS"
+      register: apache2_variable
+
+    - name: Restart apache2(Pop!_OS)
+      tags: restart_apache2
+      service:
+          name: apache2
+          state: restarted
+      when: apache2_variable.changed
 
     - name: copy a default hmtl file
       tags: apache_curl
       copy:
-        src: file/default_site.html
+        src: /home/sky/ansible_github/file/default_site.html
         dest: /var/www/html/index.html
         owner: root
         group: root
