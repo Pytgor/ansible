@@ -1,5 +1,7 @@
 apache_package_name: apache2
 apache_service: apache2
 curl_package: curl
-ssh_users: "sky simone"
+ssh_users:
+  - sky
+  - simone
 ssh_template_file: sshd_config_pop.j2
