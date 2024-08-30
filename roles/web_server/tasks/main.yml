@@ -1,0 +1,50 @@
+- name: Install apache2 and curl for Pop OS
+  tags: apache_curl
+  apt:
+    name:
+      - apache2
+      - curl
+    state: latest
+  when: ansible_distribution == "Pop!_OS"
+
+- name: Install aapche and curl for Ubuntu
+  tags: apache_curl
+  apt:
+    name:
+      - apache2
+      - curl
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: Start apache2
+  tags:  start_apache2
+  service:
+      name: apache2
+      state: started
+      enabled: yes
+  when: ansible_distribution == "Pop!_OS"
+
+- name: change e-mail address for admin
+  tags: email_change
+  lineinfile:
+    path: /etc/apache2/apache2.conf
+    regexp: '^ServerAdmin'
+    line: ServerAdmin test@server.com
+  when: ansible_distribution == "Pop!_OS"
+  register: apache2_variable
+
+- name: Restart apache2(Pop!_OS)
+  tags: restart_apache2
+  service:
+      name: apache2
+      state: restarted
+  when: apache2_variable.changed
+
+- name: copy a default hmtl file
+  tags: apache_curl
+  copy:
+    src: /home/sky/ansible_github/file/default_site.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644

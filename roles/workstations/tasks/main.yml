@@ -1,0 +1,28 @@
+
+- name: install unzip
+  package:
+      name: unzip
+      state: latest
+
+
+
+- name: Check if a file exist
+  stat:
+     path: /tmp/terraform_1.5.6_linux_amd64.zip
+  register: terraform_variable
+
+- name: Download Terraform ZIP
+  get_url:
+     url: https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
+     dest: /tmp/terraform_1.5.6_linux_amd64.zip
+
+- name: Install terraform
+  tags: terra
+  unarchive:
+      src: /tmp/terraform_1.5.6_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      owner: root
+      group: root
+      mode: 0755
+

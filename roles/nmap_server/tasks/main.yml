@@ -1,0 +1,14 @@
+
+- name: install nmap package(Ubuntu)
+  tags: map
+  apt:
+    name: nmap
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: install nmap package(Pop_OS)
+  tags: map
+  apt:
+    name: nmap
+    state: latest
+  when: ansible_distribution == "Pop!_OS"
