@@ -15,6 +15,7 @@
   get_url:
      url: https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
      dest: /tmp/terraform_1.5.6_linux_amd64.zip
+  when: not terraform_variable.stat.exists
 
 - name: Install terraform
   tags: terra

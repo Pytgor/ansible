@@ -2,43 +2,24 @@
   tags: apache_curl
   apt:
     name:
-      - apache2
-      - curl
+      - "{{ apache_package_name }}"
+      - "{{ curl_package }}"
     state: latest
-  when: ansible_distribution == "Pop!_OS"
 
-- name: Install aapche and curl for Ubuntu
-  tags: apache_curl
-  apt:
-    name:
-      - apache2
-      - curl
-    state: latest
-  when: ansible_distribution == "Ubuntu"
-
-- name: Start apache2
+- name: Start apache2 and enable apache2
   tags:  start_apache2
   service:
-      name: apache2
+      name: "{{ apache_package_name }}"
       state: started
       enabled: yes
-  when: ansible_distribution == "Pop!_OS"
 
 - name: change e-mail address for admin
   tags: email_change
   lineinfile:
     path: /etc/apache2/apache2.conf
     regexp: '^ServerAdmin'
-    line: ServerAdmin test@server.com
-  when: ansible_distribution == "Pop!_OS"
-  register: apache2_variable
-
-- name: Restart apache2(Pop!_OS)
-  tags: restart_apache2
-  service:
-      name: apache2
-      state: restarted
-  when: apache2_variable.changed
+    line: ServerAdmin hello@mape.com
+  notify: restart_apache2
 
 - name: copy a default hmtl file
   tags: apache_curl
