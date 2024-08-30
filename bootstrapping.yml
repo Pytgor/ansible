@@ -24,7 +24,8 @@
       tags: always
       user:
         name: simone
-        group: root
+        state: present
+        groups: root
 
     - name: Add ssh key for simone
       tags: always
