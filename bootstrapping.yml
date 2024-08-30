@@ -25,7 +25,9 @@
       user:
         name: simone
         state: present
-        groups: root
+        groups:
+          - root
+          - sudo
 
     - name: Add ssh key for simone
       tags: always
