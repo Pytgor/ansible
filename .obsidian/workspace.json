@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cyber_Security/ANSIBLE TO LINK TO A SERVER.md",
+                "file": "Cyber_Security/Docker.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "5a26f36427d5cfea",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cyber_Security/ANSIBLE TO LINK TO A SERVER.md",
+                "file": "Cyber_Security/Docker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cyber_Security/ANSIBLE TO LINK TO A SERVER.md",
+                "file": "Cyber_Security/Docker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cyber_Security/ANSIBLE TO LINK TO A SERVER.md"
+                "file": "Cyber_Security/Docker.md"
               }
             }
           }
@@ -146,10 +147,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2bc0675190b9a23e",
+  "active": "e1e9309bf27469dc",
   "lastOpenFiles": [
-    "Cyber_Security/testing.txt.md",
     "Cyber_Security/SSH KEY GENERATOR.md",
+    "Cyber_Security/Docker.md",
+    "Cyber_Security/testing.txt.md",
+    "Cyber_Security/Gobuster.md",
+    "Cyber_Security/Privilege escalation binaries.md",
+    "Cyber_Security/smbmap.md",
+    "Cyber_Security/STTY TREATMENT.md",
+    "Cyber_Security/Python Server Data Transfer.md",
+    "Cyber_Security/Hydra to Crack user password.md",
+    "Cyber_Security/mysql log in.md",
+    "Cyber_Security/Impacket.md",
+    "Cyber_Security/Crackmapexe.md",
+    "Cyber_Security/ANSIBLE TO LINK TO A SERVER.md",
     "Cyber_Security/CREATED FROM WINDOW.md"
   ]
 }
