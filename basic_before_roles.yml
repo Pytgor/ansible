@@ -3,13 +3,6 @@
 - hosts: all
   become: true
   pre_tasks:
-    - name: updates repo for Pop!_OS
-      tags: always
-      apt:
-        update_cache: yes
-      changed_when: false
-      when: ansible_distribution == "Pop!_OS"
-
     - name: updates repo for Ubuntu
       tags: always
       apt:
@@ -18,28 +11,9 @@
       when: ansible_distribution == "Ubuntu"
 
 
-- hosts: all
-  become: true
-  roles:
-    - base
-
-
-- hosts: workstations
-  become: true
-  roles:
-    - workstations
-
-
 - hosts: web_server
   become: true
   roles:
     - web_server
-
-
-- hosts: nmap_server
-  become: true
-  roles:
-    - nmap_server
-
 
 

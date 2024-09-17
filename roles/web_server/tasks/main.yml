@@ -1,31 +1,28 @@
-- name: Install apache2 and curl for Pop OS
-  tags: apache_curl
+- name: Install apache2, php, and mysql-server 
+  tags: server_app
   apt:
     name:
-      - "{{ apache_package_name }}"
-      - "{{ curl_package }}"
+      - apache2
+      - php
+      - mysql-server
+      - nginx
     state: latest
+  when: ansible_distribution == "Ubuntu"
 
 - name: Start apache2 and enable apache2
   tags:  start_apache2
   service:
-      name: "{{ apache_package_name }}"
+      name: apache2
       state: started
       enabled: yes
-
-- name: change e-mail address for admin
-  tags: email_change
-  lineinfile:
-    path: /etc/apache2/apache2.conf
-    regexp: '^ServerAdmin'
-    line: ServerAdmin hello@mape.com
   notify: restart_apache2
 
-- name: copy a default hmtl file
-  tags: apache_curl
-  copy:
-    src: /home/sky/ansible_github/file/default_site.html
-    dest: /var/www/html/index.html
-    owner: root
-    group: root
-    mode: 0644
+- name: Start mysql-server
+  tags: sql
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+  notify: restart_mysql
+
+

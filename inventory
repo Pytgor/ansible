@@ -1,9 +1,3 @@
 
 [web_server]
-10.0.0.26 
-
-[nmap_server]
-10.0.0.26 
-
-[workstations]
-10.0.0.69
+172.17.0.2 ansible_user=sky
