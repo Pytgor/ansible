@@ -1,4 +1,4 @@
-- name: Install apache2, php, and mysql-server 
+- name: Install apache2, php, tmux, and mysql-server 
   tags: server_app
   apt:
     name:
@@ -6,6 +6,7 @@
       - php
       - mysql-server
       - nginx
+      - tmux
     state: latest
   when: ansible_distribution == "Ubuntu"
 
