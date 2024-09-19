@@ -1,1 +1,0 @@
-> This is the same as smbclient but this will  give you the permission that you have

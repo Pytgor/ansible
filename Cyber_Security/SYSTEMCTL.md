@@ -1,2 +1,0 @@
-- sudo systemctl reload "name" > the relaod will make to load the new config file without stopping the process
-- sudo systemctl restart "name" > the restart will load the new setting but this one will stop the process to start it again.
