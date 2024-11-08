@@ -16,7 +16,7 @@
 </p>
 <h2>Languages Used</h2>
 
-- <b>PowerShell:</b> Extract RDP failed logon logs from Windows Event Viewer 
+- <b>Bash Scripting:</b>
 
 <h2>Utilities Used</h2>
 
