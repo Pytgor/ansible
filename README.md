@@ -1,4 +1,4 @@
-<h1>Failed RDP to IP Geolocation Information</h1>
+<h1>Ansible Demonstrations </h1>
 
 
  ### [YouTube Demonstration (@16:20)](https://youtu.be/RoZeVbbZ0o0?t=980)
@@ -30,12 +30,6 @@ look up the attackers Geolocation information and plot it on an Azure Sentinel M
 
 <p align="center">
 <img src="https://i.imgur.com/LhDCRz4.jpeg" height="85%" width="85%" alt="Image Analysis Dataflow"/>
-</p>
-
-<h2>World map of incoming attacks after 24 hours (built custom logs including geodata)</h2>
-
-<p align="center">
-<img src="https://i.imgur.com/krRFrK5.png" height="85%" width="85%" alt="Image Analysis Dataflow"/>
 </p>
 
 
