@@ -5,7 +5,7 @@
 
 
 <h2>Description</h2>
-<b>In this ansible configuration l am trying to test adminstrative taask such as installing programs, updating systems,
+<b>In this ansible configuration l am testing administrative task such as installing programs, updating systems,
  creating users, adding ssh key, using templates, changing text with lineinfile builtin command from ansible, etc.
 </b>
 <br />
